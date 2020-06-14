@@ -1,1 +1,32 @@
 
+We can create an app of tags
+
+for example:
+
+class Tag:
+  title
+  slug
+  timestamp
+  active
+  product=models.ManyToMany...
+  
+ Once a product is created, the uploader must enter some 
+ tags, the latter will help the users for searching
+ 
+ the searching function may look like this
+ 
+ class ProductQuerySet(models.query.QuerySet):
+  def active(self):
+    return self.filter(active=True)
+    
+  def featured(self):
+    return self.filter(featured=True, active=True)
+    
+    
+  def search(self, query):
+    lookups=(Q(title__iconatains=query) |
+            Q(description__icontains=query) |
+            Q(price__icontains=query)|
+            Q(tag__title__icontains=query)
+            )
+    return self.filter(lookups).distinct()           
