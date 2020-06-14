@@ -32,4 +32,4 @@ necessary to specify both (or either of) related_name and related_query_name. Dj
 
 
 The difference between get() and get_object_or_404 is that when by using get() when the object doesn't exist
-it raise the exception, taht's why it's rather to use get_object_or_404
+it raise the exception, taht's why it's rather to use get_object_or_404 because it handles the error
