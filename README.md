@@ -29,3 +29,7 @@ model_b = ForeignKeyField(ModelB, related_query_name='model_a') would enable you
 to use model_a as a lookup parameter in a queryset, like: ModelB.objects.filter(model_a=whatever).
 It is more common to use a singular form for the related_query_name. As the docs say, it isn't
 necessary to specify both (or either of) related_name and related_query_name. Django has sensible defaults.
+
+
+The difference between get() and get_object_or_404 is that when by using get() when the object doesn't exist
+it raise the exception, taht's why it's rather to use get_object_or_404
