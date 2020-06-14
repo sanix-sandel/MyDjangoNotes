@@ -24,9 +24,11 @@ class Tag:
     
     
   def search(self, query):
-    lookups=(Q(title__iconatains=query) |
-            Q(description__icontains=query) |
-            Q(price__icontains=query)|
-            Q(tag__title__icontains=query)
+    lookups=(Q(title__iconatains=query) | #search in the title
+            Q(description__icontains=query) | #search in the description
+            Q(price__icontains=query)| #Search in the price
+            Q(tag__title__icontains=query) 
             )
-    return self.filter(lookups).distinct()           
+    return self.filter(lookups).distinct()    
+    
+    #distinct() removes redondant products if it exist 
