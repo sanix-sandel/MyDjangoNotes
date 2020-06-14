@@ -25,4 +25,4 @@ class Book(models.Model):
     
 #With this sample model, Book.objects.all() will return all books in the database, but Book.
 #book_objects.all() will only return the ones written by Roald Dahl.
-#
+#You can attach as many Manager() instances to a model as you'd like.
