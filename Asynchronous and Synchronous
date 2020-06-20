@@ -3,3 +3,16 @@
 They're useful part of making a distributed real-time application.  
 It allows multiple consumer instances to talk with each other, 
 and with other parts of Django.
+
+A channel layer provides the following abstractions:
+
+***A channel is a mailbox where messages can be sent to. 
+Each channel has a name. Anyone who has the name of a channel
+can send a message to the channel.
+***A group is a group of related channels. A group has a name. 
+Anyone who has the name of a group can add/remove a channel to the group 
+by name and send a message to all channels in the group. It is not possible
+to enumerate what channels are in a particular group.
+
+Every consumer instance has an automatically generated unique channel name, 
+and so can be communicated with via a channel layer.
