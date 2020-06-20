@@ -1,1 +1,3 @@
 
+# Channel layer allows you to talk between different instances of an application.
+They're useful part of making a distributed real-time application.  
