@@ -16,3 +16,8 @@ to enumerate what channels are in a particular group.
 
 Every consumer instance has an automatically generated unique channel name, 
 and so can be communicated with via a channel layer.
+
+Consumers are structured around a series of named methods corresponding to the type value 
+of the messages they are going to receive, with any . 
+replaced by _. 
+The two handlers above are handling websocket.connect and websocket.receive messages respectively.
