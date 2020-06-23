@@ -35,3 +35,6 @@ The difference between get() and get_object_or_404 is that when by using get() w
 it raise the exception, taht's why it's rather to use get_object_or_404 because it handles the error
 
 Using a model Manager is very important
+
+
+Consumers are structured around a series of named methods corresponding to the type value of the messages they are going to receive, with any . replaced by _. The two handlers above are handling websocket.connect and websocket.receive messages respectively.
