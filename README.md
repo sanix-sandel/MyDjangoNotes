@@ -49,3 +49,13 @@ Instead, you have to create the base QuerySet Course.objects.annotate(total_
 modules=Count('modules')) , which is not going to be executed until it
 is forced, and use it to further restrict the QuerySet with all_courses.
 filter(subject=subject) in case the data was not found in the cache.
+
+def get_list_or_404(klass, *args, **kwargs):
+Returns the result of filter() on a given model manager cast to a list, raising Http404 if the resulting list is empty.
+
+is shortcut for
+
+obj_list = list(Model.objects.filter(title=...))
+if not obj_list:
+    raise Http404()
+return obj_list
