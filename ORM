@@ -7,7 +7,7 @@ So using the example Weblog models:
 >>> entry = Entry.objects.get(id=10)
 will be quicker than:
 >>> entry = Entry.objects.get(headline="News Item Title")
-because id is indexed by the database and is guaranteed to be unique.
+***************** because id is indexed by the database and is guaranteed to be unique.**************************
 Doing the following is potentially quite slow:
 >>> entry = Entry.objects.get(headline__startswith="News")
 
