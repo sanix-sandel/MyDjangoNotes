@@ -43,5 +43,9 @@ Consumers are structured around a series of named methods corresponding to the t
 It is important to note that you can't use a cached QuerySet to build other QuerySets,
 since what you cached are actually the results of the QuerySet. So you can't do the
 following:
-courses = cache.get('all_courses')
-courses.filter(subject=subject)
+  courses = cache.get('all_courses')
+  courses.filter(subject=subject)
+Instead, you have to create the base QuerySet Course.objects.annotate(total_
+modules=Count('modules')) , which is not going to be executed until it
+is forced, and use it to further restrict the QuerySet with all_courses.
+filter(subject=subject) in case the data was not found in the cache.
