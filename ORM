@@ -1,1 +1,18 @@
 
+There are two reasons to use a column with unique or db_index when using get() to retrieve individual objects.
+First, the query will be quicker because of the underlying database index. Also, the query could run much slower if
+multiple objects match the lookup; having a unique constraint on the column guarantees this will never happen.
+So using the example Weblog models:
+
+>>> entry = Entry.objects.get(id=10)
+will be quicker than:
+>>> entry = Entry.objects.get(headline="News Item Title")
+because id is indexed by the database and is guaranteed to be unique.
+Doing the following is potentially quite slow:
+>>> entry = Entry.objects.get(headline__startswith="News")
+
+First of all, headline is not indexed, which will make the underlying database fetch slower.
+Second, the lookup doesn’t guarantee that only one object will be returned. If the query matches more than one object,
+it will retrieve and transfer all of them from the database. This penalty could be substantial if hundreds or thousands
+of records are returned. The penalty will be compounded if the database lives on a separate server, where network
+overhead and latency also play a factor.
