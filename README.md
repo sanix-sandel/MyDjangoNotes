@@ -38,3 +38,10 @@ Using a model Manager is very important
 
 
 Consumers are structured around a series of named methods corresponding to the type value of the messages they are going to receive, with any . replaced by _. The two handlers above are handling websocket.connect and websocket.receive messages respectively.
+
+
+It is important to note that you can't use a cached QuerySet to build other QuerySets,
+since what you cached are actually the results of the QuerySet. So you can't do the
+following:
+courses = cache.get('all_courses')
+courses.filter(subject=subject)
